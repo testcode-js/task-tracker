@@ -6,7 +6,7 @@ function TaskList({ tasks, refresh }) {
   const [openDetails, setOpenDetails] = useState({});
 
   const toggleComplete = async (task) => {
-    await axios.put(`http://localhost:5000/api/tasks/${task._id}`, {
+    await axios.put(`${import.meta.env.VITE_API_URL}/api/tasks/${task._id}`, {
       ...task,
       completed: !task.completed,
     });
@@ -14,7 +14,7 @@ function TaskList({ tasks, refresh }) {
   };
 
   const deleteTask = async (id) => {
-    await axios.delete(`http://localhost:5000/api/tasks/${id}`);
+    await axios.delete(`${import.meta.env.VITE_API_URL}/api/tasks/${id}`);
     refresh();
   };
 

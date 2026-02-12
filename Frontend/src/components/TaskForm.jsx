@@ -9,7 +9,7 @@ function TaskForm({ onTaskAdded }) {
 
   const addTask = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:5000/api/tasks', {
+    await axios.post(`${import.meta.env.VITE_API_URL}/api/tasks`, {
       title,
       description,
       assignedTo,
