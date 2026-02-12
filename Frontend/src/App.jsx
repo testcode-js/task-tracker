@@ -3,13 +3,13 @@ import './App.css';
 
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
-import axios from 'axios';
+import api from './api';
 
 function App() {
   const [tasks, setTasks] = useState([]);
 
   const fetchTasks = async () => {
-    const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/tasks`);
+    const res = await api.get('/tasks');
     setTasks(res.data);
   };
 

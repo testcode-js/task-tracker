@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../api';
 
 
 function TaskList({ tasks, refresh }) {
   const [openDetails, setOpenDetails] = useState({});
 
   const toggleComplete = async (task) => {
-    await axios.put(`${import.meta.env.VITE_API_URL}/api/tasks/${task._id}`, {
+    await api.put(`/tasks/${task._id}`, {
       ...task,
       completed: !task.completed,
     });
@@ -14,7 +14,7 @@ function TaskList({ tasks, refresh }) {
   };
 
   const deleteTask = async (id) => {
-    await axios.delete(`${import.meta.env.VITE_API_URL}/api/tasks/${id}`);
+    await api.delete(`/tasks/${id}`);
     refresh();
   };
 

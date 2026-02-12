@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../api';
 
 function TaskForm({ onTaskAdded }) {
   const [title, setTitle] = useState('');
@@ -9,7 +9,7 @@ function TaskForm({ onTaskAdded }) {
 
   const addTask = async (e) => {
     e.preventDefault();
-    await axios.post(`${import.meta.env.VITE_API_URL}/api/tasks`, {
+    await api.post('/tasks', {
       title,
       description,
       assignedTo,
